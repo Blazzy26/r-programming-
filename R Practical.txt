@@ -1,0 +1,363 @@
+PRACTICAL 1: 
+Write a R program to find Sum, Mean and Product of a Vector, ignore element like NA or NaN. 
+
+x  <- c(1,NA,2,NA,3,4,5,6)
+ 
+print(sum(x,na.rm = TRUE))
+print(mean(x,na.rm = TRUE))
+print(prod(x,na.rm = TRUE))
+
+
+PRACTICAL 2: 
+Write a R program to create a vector using: operator and seq() function. Perform any 3 operations on created vector. 
+
+
+print(1:15)
+print(seq(25))
+print(seq(9,25))
+print(seq(from = 4, to = 25))
+print(seq(from = 4, to = 25, length.out = 5))
+
+
+PRACTICAL 3: 
+Write a R program to create a list containing strings, numbers, vectors and a logical values. Perform any 3 operations on created list. 
+
+> list1=list("Red","Blue",c(21,32,11),TRUE,51.2)
+> list1
+[[1]]
+[1] "Red"
+
+[[2]]
+[1] "Blue"
+
+[[3]]
+[1] 21 32 11
+
+[[4]]
+[1] TRUE
+
+[[5]]
+[1] 51.2
+
+> list1=list(c("Jan","Feb","Mar"),matrix(c(21,32,11),nrow=2),list("Green",13.4))
+Warning message:
+In matrix(c(21, 32, 11), nrow = 2) :
+  data length [3] is not a sub-multiple or multiple of the number of rows [2]
+> list1=list(c("Jan","Feb","Mar"),matrix(c(21,32,11),nrow=3),list("Green",13.4))
+> list1
+[[1]]
+[1] "Jan" "Feb" "Mar"
+
+[[2]]
+     [,1]
+[1,]   21
+[2,]   32
+[3,]   11
+
+[[3]]
+[[3]][[1]]
+[1] "Green"
+
+[[3]][[2]]
+[1] 13.4
+
+
+> names(list1)<-c("1st Quater","A Matrix","Inner_List")
+> list1
+$`1st Quater`
+[1] "Jan" "Feb" "Mar"
+
+$`A Matrix`
+     [,1]
+[1,]   21
+[2,]   32
+[3,]   11
+
+$Inner_List
+$Inner_List[[1]]
+[1] "Green"
+
+$Inner_List[[2]]
+[1] 13.4
+
+
+> list1[3] <- "Updated element"
+> list1
+$`1st Quater`
+[1] "Jan" "Feb" "Mar"
+
+$`A Matrix`
+     [,1]
+[1,]   21
+[2,]   32
+[3,]   11
+
+$Inner_List
+[1] "Updated element"
+
+> l1=(1,2,3)
+Error: unexpected ',' in "l1=(1,"
+> l1=list(1,2,3)
+> l1
+[[1]]
+[1] 1
+
+[[2]]
+[1] 2
+
+[[3]]
+[1] 3
+
+> l2=list("a","b","c")
+> l2
+[[1]]
+[1] "a"
+
+[[2]]
+[1] "b"
+
+[[3]]
+[1] "c"
+
+> merge = c(l1,l2)
+> merge
+[[1]]
+[1] 1
+
+[[2]]
+[1] 2
+
+[[3]]
+[1] 3
+
+[[4]]
+[1] "a"
+
+[[5]]
+[1] "b"
+
+[[6]]
+[1] "c"
+
+> l3 = list(1:5)
+> l3
+[[1]]
+[1] 1 2 3 4 5
+
+> l4 = list(6:10)
+> l4
+[[1]]
+[1]  6  7  8  9 10
+
+> v1 = unlist(l3)
+> v2 = unlist(l4)
+> v1
+[1] 1 2 3 4 5
+> v2
+[1]  6  7  8  9 10
+> add v1 +v2
+Error: unexpected symbol in "add v1"
+> add = v1 +v2
+> add
+[1]  7  9 11 13 15
+
+PRACTICAL 4: 
+Write a R program to create a list of dataframes and access each of those dataframes from the list. 
+
+#Creating list of dataframe
+df1 = data.frame(colour = c("Red","Blue",Green"),colour_id = c(1,2,3))
+df2 = data.frame(colour = c("Orange","Black",White"),colour_id = c(4,5,6))
+list_dataframe = list(df1,df2)
+print(list_dataframe)
+
+#Naming data frame 
+list_dataframe = list("Colour_list1"= df1,"Colour_list2"=df2)
+print(list_dataframe)
+
+#ACCESSING
+#Accessing the components by names 
+print(list_dataframe$Colour_list2)
+
+#Accessing top level component 
+print(list_dataframe[[1]])
+
+#Accessing inner leverl component 
+print(list_dataframe[[1]][2])
+
+#Accessing another inner level component 
+print(list_dataframe[[1]][2,2])
+
+#MODIFYING 
+#Modifying components of data frame 
+list_dataframe$Colour_list2 =data.frame(colour=c("Pink","Violet","grey"),colour_id=c(11,12,13))
+print(list_dataframe)
+
+#Modifying second column from Colour_list1
+list_dataframe[[1]][2] = c(21,22,23)
+print(list_dataframe)
+
+#Modifying Element 2 from Colour_list2
+list_dataframe[[2]][2,2] = 34
+print(list_dataframe)
+
+#CONCATENATING
+df3 = data.frame(colour=c("Sea Green","Sky Blue","Peach"),colour_id=c(41,42,43))
+newlist_dataframe = list("Colour_list3"=df3)
+list_dataframe = c(list_dataframe,newlist_dataframe)
+print(list_dataframe)
+#DELETE OPERATIONS 
+list_dataframe[[3]] <- NULL
+print(list_dataframe)
+
+PRACTICAL 5:
+
+Write a R program to create an ordered factor from data consisting of the names of months. 
+month_v = c("March", "April", "January", "November", "January", "September", "October", "April", "July", "May")
+print(month_v)
+f = factor(month_v)
+print("Ordered Factor Of The Said Vector")
+print(f)
+print(table(f))
+
+PRACTICAL 6: 
+Write a R program to create a data frame from four given vectors. 
+ 
+v1 = c('mon','tue','wed','thu')
+v2 = c('fri','sat','sun','nan')
+v3 = c('jan','feb','march','ape')
+v4 = c('may','april','nov','dec')
+data.frame(v1,v2,v3,v4)
+
+PRACTICAL 7: 
+Write a R program to extract 3rd and 5th rows with 1st and 3rd columns from a given data frame. 
+ 
+pokemon = data.frame(
+  NAME = c('Bulbasaur','Ivysaur','Venusaur','Caterpie','Charizard'),
+  TYPE1 = c('Grass','Grass','Grass','Bug','Fire'),
+  TYPE2 = c('Poison','Poison','Poison','Flying','LegendBaby'),
+  LEGENDARY = c('NO','NO','NO','NO','YES')
+  )
+print(pokemon)
+print("Extract 3rd and 5th row with 1st and 3rd column")
+result =  pokemon[c(3,5),c(1,3)]
+print(result)
+
+PRACTICAL 8: 
+Write a R program to drop row(s)/column(s) by number from a given data frame. 
+
+df1 = data.frame(emp_id=c(1,2,3),emp_name=c("Boy","Joy","Roy"))
+print(df1)
+print("Dropping a column")
+df1[2]<-NULL
+print(df1)
+
+
+ 
+PRACTICAL 9: 
+Write a R program to create inner, outer, left, right join(merge) from given two data frames. 
+
+d1 = data.frame(id=c(1:5), name=c("Abc","Bcd","Cde","Def","Efg"), div=c("A","B","A","B","A"), salaryInLkh=c(2,3,4,2,5))
+print(d1)
+
+d2 = data.frame(id=c(1:5), name=c("ppp","ooo","siu","wow","eww"), div=c("A","B","A","B","A"), salaryInLkh=c(4,3,1,2,1))
+print(d2)
+
+#innerjoin
+innerJoin = merge(d1,d2,all=FALSE)
+innerJoin
+
+#OUTER JOIN
+outerJoin = merge(d1,d2,all=TRUE)
+outerJoin
+
+#LEFT JOIN
+leftJoin=merge(d1,d2,all.x=T)
+leftJoin
+
+#RIGHT JOIN
+Rightjoin = merge(d1,d2,all.d2=TRUE)
+Rightjoin
+
+
+
+
+
+
+PRACTICAL 10: 
+Write a R program to create a data frame using two given vectors and display the duplicated elements and unique rows of the said data frame. 
+
+
+ 
+df1 = data.frame(NAME = c('Bulbasaur','Ivysaur','Venusaur','Caterpie','Ho-oh','Caterpie'),
+                 TYPE1 = c('Grass','Grass','Grass','Bug','Fire','Bug'),
+                 TYPE2 = c('Poison','Poison','Poison','Flying','LegendBaby','Flying'),
+                 LEGENDARY = c('NO','NO','NO','NO','YES','NO')
+)
+
+print(duplicated(df1))
+print(unique(df1))
+
+PRACTICAL 11: 
+Implement matrices addition, subtraction and Multiplication. 
+
+ m1 = matrix(c(1,2,3,4,5,6,7,8,9),nrow=3)
+print(m1)
+
+m2 = matrix(c(10,20,30,40,50,60,70,80,90),nrow=3)
+print(m2)
+
+cat("Addition of two matrices")
+result= m1 + m2
+print(result)
+
+cat("Subtraction of two matrices")
+result2= m1 - m2
+print(result2)
+
+
+cat("Multiplication of two matrices")
+result3 = m1 * m2
+print(result3)
+
+
+cat("Division of two matrices")
+result4 = m1 / m2
+print(result4)
+
+ 
+ PRACTICAL 12: 
+Demonstrate any five visualization tools with help of suitable data. 
+
+mtcars
+
+#BAR CHART
+counts = table(mtcars$gear)
+barplot(counts, col=c("blue","red","green"), legend=rownames(counts))
+
+#PIE CHART
+library(plotrix)
+slices = c(10,12,14,16,18)
+label = c("US","UK","Ind","Ger","Fra")
+pie(slices,labels=label,main="Simple pie chart",explode=0.05)
+
+#DENSITY CHART
+density_data = density(mtcars$mpg)
+plot(density_data,main="Density of miles per gallon")
+
+#HISTOGRAM
+hist(mtcars$mpg, breaks=15, col="blue")
+
+#LINE CHART
+wt = c(2.5,2.8,3.2,4.8,5.1,5.9,6.8,7.1,7.8,8.1)
+mnth = c(0:9)
+plot(mnth, wt, type="b", main="Baby weight chart")
+OUTPUT: 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
